@@ -1,36 +1,90 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {}
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseBadge(license) {
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
+  if (license == 'Apache 2.0 License') {
+    return '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)]';
+  }
+  else if (license == 'BSD 3-Clause License') {
+    return '[![License](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)]';
+  }
+  else if (license == 'BSD 2-Clause License') {
+    return '[![License](https://img.shields.io/badge/License-BSD%202--Clause-orange.svg)]';
+  }
+  else {
+    return '';
+  }
 
-// TODO: Create a function to generate markdown for README
+}
+
+
+function renderLicenseLink(license) {
+
+
+  if (license == 'Apache 2.0 License') {
+    return 'https://opensource.org/licenses/Apache-2.0';
+  }
+  else if (license == 'BSD 3-Clause License') {
+    return 'https://opensource.org/licenses/BSD-3-Clause';
+  }
+  else if (license == 'BSD 2-Clause License') {
+    return 'https://opensource.org/licenses/BSD-2-Clause';
+  }
+  else {
+    return '#';
+  }
+
+
+}
+
+
+function renderLicenseSection(license) { }
+
+
 function generateMarkdown(data) {
-  return `# ${data.title}
 
+
+  let badge = renderLicenseBadge(data.lisence);
+  let lisenceLink = renderLicenseLink(data.lisence);
+
+
+  return `
+
+# ${data.title}
+    
+
+## Table Of Contents
+
+1. [Description](#description)
+2. [Installation](#installation)
+3. [Usage](#usage)
+4. [Contributing](#contributing)
+5. [Tests](#tests)
+6. [Lisence](#lisence)
+7. [Questions](#questions)
+
+
+## Description
 ${data.description}
 
-## Table of Contents
+## Installation
+${data.installation}
 
+## Usage
+${data['usage-info']}
 
+## Contributing
+${data['contribution-guidelines']}
 
-## Install
+## Tests
+${data.test}
 
-${data.install}
+## Lisence
+${data.lisence}<br>
+${badge}(${lisenceLink})
 
-$$ Test
-
-${test}
-
-
-
-
+## Questions
+- My GitHub Profile https://github.com/${data['github-username']}
+- Reach out to me on my email ${data.email}
 
 `;
 
@@ -38,15 +92,6 @@ ${test}
 }
 
 
-
-
-var age = 33
-var name = "Steph"
-
-var info = "My name is " + name + " and my age is " + age + ".";
-var info2 = `My name is ${name} and my age is ${age}.`
-console.log("info: ", info);
-console.log("info2: ", info2);
 
 
 module.exports = generateMarkdown;
